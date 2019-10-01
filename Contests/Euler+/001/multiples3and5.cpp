@@ -10,38 +10,22 @@ int main(){
     cin >> n;
 
     while(cin>>n){
-
-    int result = findMultiple3(n) + findMultiple5(n) - findMultiple15(n);
+    //account for rounding down
+    n= n-1;
+    //closed form of the sum of i
+    //(n*(n+1))/2 
+    //with n adjusted for multiples of 3 and 5
+    //and first multiple in common subtracted 
+    //to account for repeats in the sums of 3 and 5
+    long mult3 = n/3;
+    long mult5 = n/5;
+    long mult15 = n/15;
+    long result = 3*(mult3*(mult3+1)/2)+5*(mult5*(mult5+1)/2)-15*(mult15*(mult15+1)/2);
     cout << result << endl;
 
     }
 
     return 0;
-}
-
-
-int findMultiple3 (int n){
-    int mult3 = 0;
-    for (int i = 3; i < n; i = i+3){
-        mult3+=i;
-    }
-    return mult3;
-}
-
-int findMultiple5 (int n){
-    int mult5 = 0;
-    for (int i = 5; i <n; i = i+5){
-        mult5+=i;
-    }
-    return mult5;
-}
-
-int findMultiple15 (int n){
-    int mult15 = 0;
-    for (int i = 15; i < n; i = i+15){
-        mult15+=i;
-    }
-    return mult15;
 }
 
 
