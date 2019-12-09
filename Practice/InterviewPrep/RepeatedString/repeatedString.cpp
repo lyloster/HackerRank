@@ -4,29 +4,31 @@ using namespace std;
 
 // Complete the repeatedString function below.
 long repeatedString(string s, long n) {
-    long repeats = n/s.length();
-    long remainder = n%s.length();
-    string newS = s;
-
-    for(long i = 1; i < repeats; i++){
-        newS += s;
-    }
-
-    if(remainder != 0){
-        for(long i = 0; i < remainder; i++){
-            newS += s[i];
-        }
-    }
-    cout << newS;
     long numA = 0;
-    for(long i = 0; i < newS.length(); i++){
-        if(newS[i] == 'a'){
+
+    //count numA in substring
+    for(long i = 0; i < s.length(); i++){
+        if(s[i] == 'a'){
             numA++;
         }
     }
+
+    //multiply by number of repeats
+    long repeats = n/s.length();
+    numA *= repeats;
+
+    //account for partial repeats
+    long remainder = n%s.length();
+    if(remainder != 0){
+        for(long i = 0; i < remainder; i++){
+            if(s[i] == 'a'){
+            numA++;
+            }
+        }
+    }
+    
+
     return numA;
-
-
 }
 
 int main()
