@@ -6,21 +6,19 @@ using namespace std;
 int makeAnagram(string a, string b) {
     string s;
     int lengthA = a.length();
-    cout << lengthA << endl;
     int lengthB = b.length();
-    cout << lengthB << endl;
+    
     for(int i = 0; i < a.length(); i++){
         for(int j = 0; j < b.length(); j++){
             if(a[i] == b[j]){
                 s += a[i];
-                //messing up the indexing
                 b.erase(b.begin()+j);
-            }
+                break;
+            } 
         }
     }
-    cout << s.length() << endl;
-    int deletion = (lengthA+lengthB)-(s.length()*2);
-    return deletion;
+
+    return (lengthA+lengthB)-(s.length()*2);
 }
 
 int main()
