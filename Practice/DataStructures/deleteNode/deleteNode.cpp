@@ -70,26 +70,25 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
  */
 SinglyLinkedListNode* deleteNode(SinglyLinkedListNode* head, int position) {
 
-    //remove the first element of the list, head needs to be modified in this case
+    SinglyLinkedListNode* current = head;
+    SinglyLinkedListNode* temp;
+    
     if(position == 0){
-        head = head->next;
+        head = current->next;
+        delete current;
         return head;
     }
-    //needs a n node pointer that stores a copy of the original start of address, so that the list is not modified
-    //if working with head, then everything before the desired position
-    //is removed
-    SinglyLinkedListNode* n = head;
-
-    //traverse until desired position
-    //position-1 because working with zero based, want to end up at one before the node to be deleted
-    while(position-1 != 0){
-        n = n->next;
-        position --;
+    for(int i = 1; i < position; i++){
+        current = current->next;
     }
 
-    n->next = n->next->next;
+    temp = current->next;
+    current->next = current->next->next;
+    delete temp;
 
     return head;
+
+
 }
 
 int main()
