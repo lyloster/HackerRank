@@ -10,6 +10,7 @@ public class Solution {
         for(int i = 0; i < n; ++i){
             myList.add(scan.nextInt());
         }
+        
         int queries = scan.nextInt();
         for(int i = 0; i < queries; ++i){
             String command = scan.next();
@@ -20,7 +21,7 @@ public class Solution {
                 //System.out.println( "x == " + x);
                 //System.out.println( "y == " + y);
                 myList.add(x,y);
-                
+
             }else{
                 //System.out.println(Arrays.toString(myList.toArray()));
                 int x = scan.nextInt();
